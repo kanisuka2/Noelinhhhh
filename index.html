@@ -3,137 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎄 Mery chít mợt 🎄</title>
+<title>Mery chít mợt</title>
 
 <style>
 body{
   margin:0;
   min-height:100vh;
-  background:linear-gradient(180deg,#14001f,#000);
+  background:#0b0014;
+  color:white;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   font-family:monospace;
-  color:white;
   text-align:center;
 }
-
-/* ❄ TUYẾT */
-.snow{
-  position:fixed;
-  top:-10px;
-  animation:fall linear infinite;
-  pointer-events:none;
-}
-@keyframes fall{
-  to{transform:translateY(110vh)}
-}
-
-/* 🎄 CÂY THÔNG ASCII – TO & CÂN */
 .tree{
-  font-size:28px;
-  line-height:1.1;
-  white-space:pre;
-  cursor:pointer;
-  user-select:none;
-}
-.star{
-  color:gold;
-  text-shadow:0 0 20px gold;
-}
-.light{
-  animation:blink 1.2s infinite alternate;
-}
-@keyframes blink{
-  0%{color:red}
-  25%{color:gold}
-  50%{color:hotpink}
-  75%{color:cyan}
-  100%{color:lime}
-}
-
-/* 💖 CHỮ */
-#msg{
-  display:none;
-  margin-top:18px;
   font-size:30px;
-  color:#ffb6d9;
-  text-shadow:0 0 15px pink;
+  line-height:1.1;
+  cursor:pointer;
 }
-
-/* 🎵 NÚT NHẠC */
-#playBtn{
-  margin-top:22px;
-  padding:16px 34px;
+.star{color:gold}
+.light{animation:blink 1.2s infinite alternate}
+@keyframes blink{
+  0%{color:red}50%{color:gold}100%{color:lime}
+}
+button{
+  margin-top:20px;
+  padding:14px 30px;
   font-size:20px;
   border:none;
   border-radius:40px;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  background:#ff6fae;
   color:white;
   cursor:pointer;
-  box-shadow:0 0 30px rgba(255,120,150,.9);
 }
+#msg{display:none;font-size:28px;color:pink;margin-top:15px}
 </style>
 </head>
 
 <body>
 
-<!-- ❄ TUYẾT -->
-<script>
-for(let i=0;i<100;i++){
-  const s=document.createElement("div");
-  s.className="snow";
-  s.innerHTML="❄";
-  s.style.left=Math.random()*100+"vw";
-  s.style.fontSize=12+Math.random()*18+"px";
-  s.style.opacity=Math.random();
-  s.style.animationDuration=3+Math.random()*5+"s";
-  document.body.appendChild(s);
-}
-</script>
-
-<!-- 🎄 CÂY THÔNG -->
 <div class="tree" onclick="showMsg()">
-          <span class="star">⭐</span>
-         <span class="light">***</span>
-        <span class="light">*****</span>
-       <span class="light">*******</span>
-      <span class="light">*********</span>
-     <span class="light">***********</span>
-    <span class="light">*************</span>
-   <span class="light">***************</span>
-  <span class="light">*****************</span>
- <span class="light">*******************</span>
-<span class="light">*********************</span>
-            |||
-            |||
+<span class="star">⭐</span>
+<br>
+<span class="light">***</span><br>
+<span class="light">*****</span><br>
+<span class="light">*******</span><br>
+<span class="light">*********</span><br>
+<span class="light">***********</span><br>
+<span class="light">*************</span><br>
+<span class="light">***************</span><br>
+<span class="light">*****************</span><br>
+|||<br>|||
 </div>
 
 <div id="msg">💖 Mery chít mợt 💖</div>
 
-<!-- 🎵 NÚT NHẠC -->
-<button id="playBtn">🎶 BẤM ĐỂ NGHE JINGLE BELLS 🎶</button>
+<button onclick="playMusic()">🎵 BẤM ĐỂ NGHE JINGLE BELLS</button>
 
-<!-- 🎵 NHẠC JINGLE BELLS -->
-<audio id="music">
-  <source src="https://cdn.pixabay.com/download/audio/2022/12/20/audio_0b9c9d0e3c.mp3" type="audio/mpeg">
+<audio id="music" preload="auto">
+  <source src="jingle-bells.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 const music=document.getElementById("music");
-document.getElementById("playBtn").addEventListener("click",()=>{
+function playMusic(){
   music.currentTime=0;
-  music.play();      // <-- GỌI TRỰC TIẾP: KHÔNG BỊ CHẶN
-});
+  music.play();
+}
 function showMsg(){
   document.getElementById("msg").style.display="block";
 }
 </script>
-  <audio id="music">
-  <source src="jingle-bells.mp3" type="audio/mpeg">
-</audio>
-
 
 </body>
 </html>
